@@ -3,11 +3,12 @@ import Cards from './Cards';
 import { UseToken, GetUserCards, GetPublicCards } from './fetch/Fetch';
 
 const CardsPage = () => {
-  GetUserCards()
+  const cardsList = GetPublicCards()
     
   return (
-      <div> 
-        {userCards.map((data,index) => { if (data) {
+      <div>
+          <Cards cardsList={ cardsList }/>
+        {/* {userCards.map((data,index) => { if (data) {
                 return (
                   <div key={ data.question }>
                     <h4>{ data.question }</h4>
@@ -17,7 +18,7 @@ const CardsPage = () => {
               }
               return null
         })}
-        
+         */}
       </div> 
     )
 
@@ -25,3 +26,5 @@ const CardsPage = () => {
 
 // import GetUserCards here
 //show cards for user
+
+export default CardsPage

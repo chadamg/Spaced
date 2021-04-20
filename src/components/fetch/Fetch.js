@@ -43,13 +43,13 @@ export const GetUserCards = () => {
 
     //if user selects option to view public cards, function
     if(!token) {//button is placeholder
-      GetPublicCards()
+      // GetPublicCards()
     }
     
     useEffect( () => fetchUserCards()
     , []); //useEffect dependency array has button in it, rerenders cards if ticked
 
-
+    return(userCards)
   }
 
   // [
@@ -67,23 +67,43 @@ export const GetUserCards = () => {
 
 //Retrieves all card of current user + public cards
 
-export const GetPublicCards = () => {
-    const [publicCards, setPublicCards] = useState('');
+// export const GetPublicCards = () => {
+//     const [publicCards, setPublicCards] = useState([]);
 
-    const fetchPublicCards = async () => {
-        return await fetch('/api/card?public=true')
-            .then(response => response.json())
-            .then(data => {
-                setPublicCards(data)
-            });
-    }
+//     const fetchPublicCards = async () => {
+//         return await fetch('/api/card?public=true')
+//             .then(response => response.json())
+//             .then(data => {
+//                 setPublicCards(data)
+//             });
+//     }
 
-    useEffect( () => fetchPublicCards()
-    , []);
+//     useEffect( () => fetchPublicCards()
+//     , []);
 
-    return (publicCards)
-}
+//     return (publicCards)
+// }
 
+const url = '/api/card/?ordering=-difficulty/'
+
+export const useFetch = (url) => {
+  const [loading, setLoading] = useState(true);
+  const [payload, setPayload] = useState([]);
+
+  const getPayload = useCallback(async () => {
+    const response = await fetch(url);
+    const payload = await response.json();
+    setPayload(payload);
+    setLoading(false);
+    }, [url]);
+
+
+  useEffect(() => {
+    getPayload();
+  }, [url, getPayload]);
+  return { loading, payload };
+
+};
 
 
 export default UseToken
