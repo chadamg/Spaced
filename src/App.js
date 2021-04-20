@@ -5,6 +5,7 @@ import FlashcardList from './components/FlashcardList';
 import './App.css';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import FetchModular from './components/fetch/useFetch';
 import UseToken from './components/fetch/Fetch';
 
 function App() {
@@ -35,14 +36,11 @@ function App() {
     .then(res => res.json())
     .then(data => {
       setFlashcards(data.map((questionItem, index) => {
-        
           return {
           id: questionItem.id,
           question: questionItem.question,
           answer: questionItem.answer
           }
-        
-        
       }))
     })
   }
@@ -54,6 +52,8 @@ function App() {
   // }
 
   return (
+      // <FetchModular />
+
     <>
       <div>
         <h1>Application</h1>
