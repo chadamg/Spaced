@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,12 +13,25 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import PropTypes from 'prop-types';
+
+async function loginUser(credentials) {
+  return fetch('/api/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Spaced
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -46,8 +59,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn({ setToken }) {
   const classes = useStyles();
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({
+      username,
+      password
+    });
+    setToken(token);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,17 +83,18 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
-            name="email"
+            label="Username"
+            name="username"
             autoComplete="email"
             autoFocus
+            InputProps={{onChange: e => setUserName(e.target.value)}}
           />
           <TextField
             variant="outlined"
@@ -81,6 +106,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            InputProps={{onChange: e => setPassword(e.target.value)}}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -114,4 +140,8 @@ export default function SignIn() {
       </Box>
     </Container>
   );
+}
+
+SignIn.propTypes = {
+  setToken: PropTypes.func.isRequired
 }
