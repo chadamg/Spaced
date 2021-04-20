@@ -2,15 +2,17 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CardsPage from './components/CardsPage';
 import React, { useState } from 'react';
 import SignIn from './components/SignIn';
-import useToken from './components/useToken';
+import SignUp from './components/SignUp';
+import StickyFooter from './components/Footer';
+import UseToken from './components/fetch/Fetch';
 
 function App() {
 
-  const { token, setToken } = useToken();
+  const { token, setToken } = UseToken();
 
   if(!token) {
     return (
-      <SignIn setToken={setToken} />
+      <SignUp setToken={setToken} />
     ) 
   }
 

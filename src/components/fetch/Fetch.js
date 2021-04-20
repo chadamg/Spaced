@@ -1,51 +1,89 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
+//Token functions
+const UseToken = () => {
+  const getToken = () => {
+    const tokenString = localStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+    return userToken?.token
+  };
 
-//submit function
+  const [token, setToken] = useState(getToken());
 
-// inside body:
-// {
-//     "username": "Lionel",
-//     "password": "123"
-// }
+  const saveToken = userToken => {
+    localStorage.setItem('token', JSON.stringify(userToken));
+    setToken(userToken.token);
+  };
 
-// returned by server:
-// {
-//     "user": {
-//         "id": 1,
-//         "username": "Lionel",
-//         "email": "smithlionel1121@gmail.com"
-//     },
-//     "token": "bdfee2fec8c30f862e8f485b2da3460b549abc61036f80b9841f8953f8d91e47"
-// }
-
-
-const SubmitLogin = async (event) => {
-    event.preventDefault();
-
-
-    await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(this.state)
-    })
-    .then ((response) => {
-        if(response.status === 401) {
-            throw new Error('Unauthorized');
-        }
-        return response.json();
-    })
-    .then((result) => {
-        console.log(result);
-        this.props.history.push('/api/card?public=true');
-        alert('Login Sucessful');
-    })
-    .catch((err) => {
-        console.log();
-    })
+  return {
+    setToken: saveToken,
+    token
+  }
 }
 
-export default SubmitLogin;
+//Retrieves all cards belonging to current user
+export const GetUserCards = () => {
+    const [userCards, setUserCards] = useState([]);
+    const { token } = UseToken();
+
+    const fetchUserCards = async () => {
+        return await fetch('/api/card', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Token ' + token,
+            'Content-Type': 'application/json',
+        }
+        })
+        .then(response => response.json())
+        .then(data => {
+            setUserCards(data)
+        });
+        
+    }
+
+    //if user selects option to view public cards, function
+    if(!token) {//button is placeholder
+      GetPublicCards()
+    }
+    
+    useEffect( () => fetchUserCards()
+    , []); //useEffect dependency array has button in it, rerenders cards if ticked
+
+
+  }
+
+  // [
+  //   {
+  //       "url": "http://127.0.0.1:8000/api/card/1/",
+  //       "id": 1,
+  //       "owner": "Lionel",
+  //       "question": "What is a?",
+  //       "answer": "b",
+  //       "difficulty": 1.0,
+  //       "subject": "http://127.0.0.1:8000/api/subject/1/"
+  //   }
+  // ]
+
+
+//Retrieves all card of current user + public cards
+
+export const GetPublicCards = () => {
+    const [publicCards, setPublicCards] = useState('');
+
+    const fetchPublicCards = async () => {
+        return await fetch('/api/card?public=true')
+            .then(response => response.json())
+            .then(data => {
+                setPublicCards(data)
+            });
+    }
+
+    useEffect( () => fetchPublicCards()
+    , []);
+
+    return (publicCards)
+}
+
+
+
+export default UseToken

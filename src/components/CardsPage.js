@@ -1,40 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Cards from './Cards';
-import useToken from './useToken';
+import { UseToken, GetUserCards, GetPublicCards } from './fetch/Fetch';
 
 const CardsPage = () => {
-    const [cardsListDefault, setCardsListDefault] = useState();
-    const { token } = useToken();
-
-    const fetchData = async () => {
-        if (token) {
-            return await fetch('/api/card?public=true', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Token ' + token,
-                'Content-Type': 'application/json',
-            }
-            })
-            .then(response => response.json())
-            .then(data => {
-                setCardsListDefault(data)
-            });
-        }
-        return await fetch('/api/card?public=true')
-            .then(response => response.json())
-            .then(data => {
-                setCardsListDefault(data)
-            });
-    }
-
-    useEffect( () => fetchData()
-    , []);
-
-    return (
-        <div>
-            <Cards cardsList={ cardsListDefault }/>
-        </div>
+  GetUserCards()
+    
+  return (
+      <div> 
+        {userCards.map((data,index) => { if (data) {
+                return (
+                  <div key={ data.question }>
+                    <h4>{ data.question }</h4>
+                    <h4>{ data.answer }</h4>
+                  </div>	
+                )
+              }
+              return null
+        })}
+        
+      </div> 
     )
+
 }
 
-export default CardsPage
+// import GetUserCards here
+//show cards for user
