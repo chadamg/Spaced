@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
+//fetches via GET
 export const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [payload, setPayload] = useState([]);
@@ -16,6 +17,8 @@ export const useFetch = (url) => {
   }, [url, getPayload]);
   return { loading, payload };
 };
+
+//Create a card
 
 
 //Token functions

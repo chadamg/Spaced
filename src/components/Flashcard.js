@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { FaTimes } from 'react-icons/fa';
 
-export default function Flashcard({ flashcard }) {
+// import FlashcardList from './FlashcardList';
+
+
+export default function Flashcard({ flashcard, onDelete, onToggle }) {
+  
   const [flip, setFlip] = useState(false)
   const [height, setHeight] = useState('initial')
 
@@ -19,16 +24,21 @@ export default function Flashcard({ flashcard }) {
     return () => window.removeEventListener('resize', setMaxHeight)
   }, [])
 
+  
+
   return (
-    <div
-      className={`card ${flip ? 'flip' : ''}`}
-      style={{ height: height }}
-      onClick={() => setFlip(!flip)}
-    >
-      <div className="front" ref={frontEl}>
-        {flashcard.question}
+    <div className="flashcard-wrapper">
+      <div
+        className={`card ${flip ? 'flip' : ''}`}
+        style={{ height: height }}
+        onClick={() => setFlip(!flip)}
+      >
+        <div className="front" ref={frontEl}>
+          {flashcard.question}
+          <FaTimes style={{ color: 'red', cursor: 'pointer'}} onClick={() => onDelete(flashcard.id)} />
+        </div>
+        <div className="back" ref={backEl}>{flashcard.answer}</div>
       </div>
-      <div className="back" ref={backEl}>{flashcard.answer}</div>
     </div>
   )
 }

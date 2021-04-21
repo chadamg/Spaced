@@ -6,14 +6,16 @@ api/card/ GET
 api/subject/ GET, POST
 api/card/?subject\_\_name=subjecttext GET
 
+# Done as of 21/04
+api/card/ POST
+api/card/1/ DELETE
+
 # Todo
 
 logout/ GET
-api/card/ POST
-api/card/1/ DELETE
-api/card/ POST
 
-# Might do
 
-api/card/1/answered?correct=true
+# Might do, increase difficulty
+
+api/card/1/answered?correct=true 
 api/card/1/answered?correct=false

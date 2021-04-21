@@ -237,8 +237,8 @@ Slider
 */
 .title {
   text-align: center;
-  margin-bottom: 0rem;
-  margin-top: 1rem;
+  margin-bottom: 40px;
+  margin-top: 50px;
   font-weight: 700;
   color: var(--clr-black);
   font-size: 1.5rem;
@@ -247,10 +247,9 @@ Slider
   text-align: center;
   max-width: 35em;
   margin-top: 0.7rem;
-  line-height: 2;
+  line-height: 0;
   color: var(--clr-black);
   font-size: 1.3rem;
-
 }
 .title h2 {
   display: flex;
@@ -295,7 +294,6 @@ article h4 {
   margin-top: 2rem;
   color: var(--clr-grey-3);
 } */
-
 
 .icon {
   font-size: 3rem;
@@ -455,4 +453,21 @@ Body
 .key-features-p {
   font-size: 1rem;
   text-align: center;
+}
+
+.flashcard-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  grid-gap: 16px;
+  padding: 0 50px;
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
 }

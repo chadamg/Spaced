@@ -21,4 +21,6 @@ const FetchModular = () => {
   );
 };
 
+
+
 export default FetchModular;

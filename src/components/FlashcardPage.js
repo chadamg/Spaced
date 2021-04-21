@@ -2,29 +2,31 @@ import '../App.css';
 import React, { useState, useEffect, useRef } from 'react';
 import FlashcardList from './FlashcardList';
 import UseToken from './fetch/Fetch';
+import AddCard from './AddCard';
 
 const FlashcardPage = () => {
-  const { token, setToken } = UseToken();
+  const { token } = UseToken();
   const [flashcards, setFlashcards] = useState([])
-  const [categories, setCategories] = useState([])
+  const [subjects, setSubjects] = useState([])
+  const [showAddCard, setShowAddCard] = useState(false)
 
-  const categoryEl = useRef()
+  const subjectEl = useRef()
 
-  const fetchCategories = async () => {
+  const fetchSubjects = async () => {
     return await fetch('/api/subject')
         .then(response => response.json())
         .then(data => {
-            setCategories(data)
+            setSubjects(data)
         });
   }
 
-  useEffect( () => fetchCategories()
+  useEffect( () => fetchSubjects()
   , []);
 
   async function handleSubmit(e) {
     e.preventDefault()
     return await fetch('/api/card?'+ new URLSearchParams({
-      subject__name: categoryEl.current.value
+      subject__name: subjectEl.current.value
     }), {
       method: 'GET',
       headers: {
@@ -42,15 +44,25 @@ const FlashcardPage = () => {
       }))
     })
   }
+  
+  const deleteTask = async (id) => {
+    await fetch(`/api/card/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Authorization": "Token " + token
+      }
+    })
+    setFlashcards(flashcards.filter((flashcard) => flashcard.id !== id))
+  }
 
   return (
     <>
       <form className="header" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="category">Subject</label>
-          <select id="category" ref={categoryEl}>
-            {categories.map(category => {
-              return <option value={category.name} key={category.id}>{category.name}</option>
+          <label htmlFor="subject">Subject</label>
+          <select id="subject" ref={subjectEl}>
+            {subjects.map(subject => {
+              return <option value={subject.name} key={subject.id}>{subject.name}</option>
             })}
           </select>
         </div>
@@ -59,7 +71,8 @@ const FlashcardPage = () => {
         </div>
       </form>
       <div className="container">
-        <FlashcardList flashcards={flashcards} />
+        <FlashcardList flashcards={flashcards} onDelete={deleteTask} onAdd={() => setShowAddCard(!showAddCard)} showAdd={showAddCard} />
+        {showAddCard && <AddCard />}
       </div>
     </>
   )

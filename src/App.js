@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 // import CardsPage from './components/CardsPage';
 // import React, { useState, useEffect, useRef } from 'react';
 import FlashcardPage from './components/FlashcardPage';
@@ -9,19 +9,12 @@ import UseToken from './components/fetch/Fetch';
 import LandingPage from './components/LandingPage';
 import Navbar from './components/LandingPageComponents/navbar/Navbar';
 import Footer from './components/LandingPageComponents/footer/index'
+import AddCard from './components/AddCard';
 
 
 function App() {
 
   const { token, setToken } = UseToken();
-
-  
-
-  // if(!token) {
-  //   return (
-  //     <SignUp setToken={setToken} />
-  //   ) 
-  // }
 
   return (
       // <FetchModular />
@@ -42,6 +35,9 @@ function App() {
               />
               <Route exact path="/cards">
                 {!token ? <Redirect to="/login" /> : <FlashcardPage />}
+              </Route>
+              <Route exact path="/add">
+                {!token ? <Redirect to="/login" /> : <AddCard />}
               </Route>
             <Footer />
         </div>
