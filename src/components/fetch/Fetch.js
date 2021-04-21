@@ -39,4 +39,4 @@ export const UseToken = () => {
   }
 }
 
-export default useFetch
+export default UseToken
