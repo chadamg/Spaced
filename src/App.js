@@ -6,6 +6,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 // import FetchModular from './components/fetch/useFetch';
 import UseToken from './components/fetch/Fetch';
+import LandingPage from './components/LandingPage';
 
 function App() {
 
@@ -25,12 +26,12 @@ function App() {
     
       <Router>
         <div>
-          <h1>Spaced</h1>
-            <Switch>
+              <Route path="/" component={LandingPage} />
               <Route path="/login" render={(props) => (
                 <SignIn {...props} setToken={setToken} />
-              )}
-              />
+              )}>
+                {token ? <Redirect to="/cards" /> : <SignIn />}
+              </Route>
               <Route path="/register" render={(props) => (
                 <SignUp {...props} setToken={setToken} />
               )}
@@ -38,7 +39,7 @@ function App() {
               <Route path="/cards">
                 {!token ? <Redirect to="/login" /> : <FlashcardPage />}
               </Route>
-            </Switch>
+              
         </div>
       </Router>
   );
