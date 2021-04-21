@@ -5,7 +5,7 @@ const content = [
       'https://www.researchgate.net/profile/Bo-Ae-Chun/publication/324816198/figure/fig1/AS:620205050982405@1524879815703/Ebbinghaus-forgetting-curve-and-review-cycle.png',
     title: 'What is spaced repetition?',
     quote:
-      'Scientifically proven to work - spaced repetition allows you to remember more with a simple method.',
+      'Scientifically proven to work - allows you to remember more with a simple method.',
   },
   {
     id: 2,
@@ -18,10 +18,10 @@ const content = [
   {
     id: 3,
     image:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959121/person-1_aufeoq.jpg',
+      'https://www.criver.com/sites/default/files/content/uploads/einstein-brain.jpg',
     title: "Why Spaced?",
     quote:
-      'Combining sleek front-end design with a scientifically proven study method, for your studying needs look no further.',
+      'We combine sleek front-end design with a scientifically proven study method.',
   }
 ];
 

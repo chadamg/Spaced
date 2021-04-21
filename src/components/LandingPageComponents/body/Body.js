@@ -1,5 +1,10 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
+import Img1 from '../landingPageImages/Img1.jpg'
+import Img2 from '../landingPageImages/Img2.png'
+import Img3 from '../landingPageImages/Img3.png'
+import body from '../landingPageImages/bodyimg.png'
+
 
 const Body = () => {
     return(
@@ -14,7 +19,7 @@ const Body = () => {
                     <Button variant="contained" color="primary">Get Started</Button>
                 </div>
                 <div class="body-image">
-                    <img src="images/placeholder.jpg" alt="placeholder image" width="550px" height="100%"></img>
+                    <img src={body} alt="body image" width="500px" height="auto"></img>
                 </div>
             </div>
             <div>
@@ -24,17 +29,17 @@ const Body = () => {
                     </div>
                     <div className="key-features-wrapper">
                         <div className="key-features-card">
-                            <img className="key-features-img" src="images/Img1.jpg"></img>
+                            <img className="key-features-img" src={Img1}></img>
                             <h2 className="key-features-h2">Categorise by Subjects</h2>
                             <p className="key-features-p">Categorise cards by subject, mix subjects to create composite study decks.</p>
                         </div>
                         <div className="key-features-card">
-                            <img className="key-features-img" src="images/Img2.jpg"></img>
+                            <img className="key-features-img" src={Img2}></img>
                             <h2 className="key-features-h2">Categorise by Difficulty</h2>
                             <p className="key-features-p">Built-in difficulty system, choose to study by difficulty.</p>
                         </div>
                         <div className="key-features-card">
-                            <img className="key-features-img" src="images/Img3.jpg"></img>
+                            <img className="key-features-img" src={Img3}></img>
                             <h2 className="key-features-h2">Add Cards</h2>
                             <p className="key-features-p">Easily add cards of your own and store it in the database to access later.</p>
                         </div>

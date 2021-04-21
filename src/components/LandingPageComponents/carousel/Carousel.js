@@ -25,30 +25,32 @@ function App() {
     })
   }
 
-  useEffect(() => {
-    const lastIndex = content.length - 1
-    if (index < 0) {
-      setIndex(lastIndex)
-    }
-    if (index > lastIndex) {
-      setIndex(0)
-    }
-  }, [index, content])
-
+  // //Comment this if enabling 39-52
   // useEffect(() => {
-  //   let slider = setInterval(() => {
-  //     setIndex((oldIndex) => {
-  //       let index = oldIndex + 1
-  //       if (index > content.length - 1) {
-  //         index = 0
-  //       }
-  //       return index
-  //     })
-  //   }, 5000)
-  //   return () => {
-  //     clearInterval(slider)
+  //   const lastIndex = content.length - 1
+  //   if (index < 0) {
+  //     setIndex(lastIndex)
   //   }
-  // }, [index])
+  //   if (index > lastIndex) {
+  //     setIndex(0)
+  //   }
+  // }, [index, content])
+
+  // Comment if enabling 29-37, this is a 5 second autoscroll functionality
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex((oldIndex) => {
+        let index = oldIndex + 1
+        if (index > content.length - 1) {
+          index = 0
+        }
+        return index
+      })
+    }, 5000)
+    return () => {
+      clearInterval(slider)
+    }
+  }, [index])
 
   return (
     <section className='section'>

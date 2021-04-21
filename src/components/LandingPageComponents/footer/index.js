@@ -1,4 +1,7 @@
 import React from 'react';
+import twitter from '../landingPageImages/twitter.png'
+import facebook from '../landingPageImages/facebook.jpg'
+import instagram from '../landingPageImages/instagram.png'
 
 import {FooterContainer, 
     FooterWrap, 
@@ -18,10 +21,9 @@ const Footer = () => {
                     <FooterLinksWrapper>
                         <FooterLinkSocialItems>
                             <FooterLinkTitle>Follow Us</FooterLinkTitle>
-                                <FooterLinkSocials src="images/twitter.jpg"/>
-                                <FooterLinkSocials src="images/facebook.jpg"/>
-                                <FooterLinkSocials src="images/google.jpg"/>
-                                <FooterLinkSocials src="images/instagram.jpg"/>
+                                <FooterLinkSocials src={twitter}/>
+                                <FooterLinkSocials src={facebook}/>
+                                <FooterLinkSocials src={instagram}/>
                         </FooterLinkSocialItems>
                         <FooterLinkItems>
                             <FooterLinkTitle>About Us</FooterLinkTitle>

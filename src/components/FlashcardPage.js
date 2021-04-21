@@ -1,8 +1,10 @@
 import '../App.css';
 import React, { useState, useEffect, useRef } from 'react';
 import FlashcardList from './FlashcardList';
+import UseToken from './fetch/Fetch';
 
 const FlashcardPage = () => {
+  const { token, setToken } = UseToken();
   const [flashcards, setFlashcards] = useState([])
   const [categories, setCategories] = useState([])
 
@@ -23,7 +25,12 @@ const FlashcardPage = () => {
     e.preventDefault()
     return await fetch('/api/card?'+ new URLSearchParams({
       subject__name: categoryEl.current.value
-    }))
+    }), {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token ' + token
+      }
+    })
     .then(res => res.json())
     .then(data => {
       setFlashcards(data.map((questionItem, index) => {

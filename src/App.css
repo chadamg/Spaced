@@ -41,6 +41,7 @@
 body {
   background-color: #C8D0D2;
   margin: 0;
+  align-items: center;
 }
 
 .container {

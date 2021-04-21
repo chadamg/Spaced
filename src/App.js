@@ -7,6 +7,9 @@ import SignUp from './components/SignUp';
 // import FetchModular from './components/fetch/useFetch';
 import UseToken from './components/fetch/Fetch';
 import LandingPage from './components/LandingPage';
+import Navbar from './components/LandingPageComponents/navbar/Navbar';
+import Footer from './components/LandingPageComponents/footer/index'
+
 
 function App() {
 
@@ -26,20 +29,21 @@ function App() {
     
       <Router>
         <div>
-              <Route path="/" component={LandingPage} />
-              <Route path="/login" render={(props) => (
+            <Navbar />
+              <Route exact path="/" component={LandingPage} />
+
+              <Route exact path="/login" render={(props) => (
                 <SignIn {...props} setToken={setToken} />
               )}>
-                {token ? <Redirect to="/cards" /> : <SignIn />}
               </Route>
-              <Route path="/register" render={(props) => (
+              <Route exact path="/register" render={(props) => (
                 <SignUp {...props} setToken={setToken} />
               )}
               />
-              <Route path="/cards">
+              <Route exact path="/cards">
                 {!token ? <Redirect to="/login" /> : <FlashcardPage />}
               </Route>
-              
+            <Footer />
         </div>
       </Router>
   );

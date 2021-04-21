@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import PropTypes from 'prop-types';
+import { useHistory } from "react-router-dom";
 
 async function loginUser(credentials) {
   return fetch('/api/auth/login', {
@@ -63,6 +64,7 @@ export default function SignIn({ setToken }) {
   const classes = useStyles();
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +73,7 @@ export default function SignIn({ setToken }) {
       password
     });
     setToken(token);
+    history.push("/cards");
   }
 
   return (

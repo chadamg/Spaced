@@ -162,7 +162,7 @@ nav {
   transform: rotate(90deg);
 }
 .logo {
-  height: 40px;
+  height: 65px;
 }
 .links a {
   color: var(--clr-grey-3);
@@ -237,8 +237,20 @@ Slider
 */
 .title {
   text-align: center;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 0rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--clr-black);
+  font-size: 1.5rem;
+}
+.text {
+  text-align: center;
+  max-width: 35em;
+  margin-top: 0.7rem;
+  line-height: 2;
+  color: var(--clr-black);
+  font-size: 1.3rem;
+
 }
 .title h2 {
   display: flex;
@@ -264,10 +276,10 @@ Slider
   overflow: hidden;
 }
 .person-img {
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  width: 150px;
-  height: 150px;
+  border-radius: 5%;
+  margin-bottom: 0rem;
+  width: 400px;
+  height: 250px;
   object-fit: cover;
   border: 4px solid var(--clr-grey-8);
   box-shadow: var(--dark-shadow);
@@ -277,21 +289,18 @@ article h4 {
   color: var(--clr-primary-5);
   margin-bottom: 0.25rem;
 }
-.title {
+/* .title {
   text-transform: capitalize;
-  margin-bottom: 3rem;
-  color: var(--clr-grey-3);
-}
-.text {
-  max-width: 35em;
-  margin: 0 auto;
+  margin-bottom: 2rem;
   margin-top: 2rem;
-  line-height: 2;
-  color: var(--clr-grey-5);
-}
+  color: var(--clr-grey-3);
+} */
+
+
 .icon {
   font-size: 3rem;
-  margin-top: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
   color: var(--clr-primary-5);
 }
 .prev,
@@ -368,12 +377,12 @@ Body
 .body-image {
   flex-basis: 40%;
   width: 50%;
+  padding-left: 20px;
 }
-
 .body-text {
   font-size: 20px;
   padding-left: 20px;
-  padding-right: 30px;
+  padding-right: 60px;
 }
 .key-features-container {
   height: 800px;
@@ -416,12 +425,14 @@ Body
   padding: 30px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
-  /* 
-  &:hover {
-      transform: scale(1.02);
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
-  } */
+}
+
+.key-features-card:hover,
+.key-features-card:focus,
+.key-features-card:active {
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .key-features-img {
