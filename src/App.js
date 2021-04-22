@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-// import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FlashcardPage from "./components/FlashcardPage";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -11,6 +11,7 @@ import Modal from "./components/StudyModal";
 
 function App() {
   const { token, setToken } = UseToken();
+  const [showAddCard, setShowAddCard] = useState(false);
 
   return (
     <Router>
@@ -18,7 +19,7 @@ function App() {
         <Navbar />
 
         <Route exact path="/" component={LandingPage} />
-
+        
         <Route
           exact
           path="/login"
@@ -32,7 +33,8 @@ function App() {
         />
 
         <Route exact path="/cards">
-          {!token ? <Redirect to="/login" /> : <FlashcardPage />}
+          {!token ? <Redirect to="/login" /> : <FlashcardPage onAdd={() => setShowAddCard(!showAddCard)}
+          showAdd={showAddCard}/>}
         </Route>
         <Modal />
 

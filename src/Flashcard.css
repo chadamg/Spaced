@@ -1,0 +1,190 @@
+.body {
+  background-color: #c8d0d2;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.container {
+  max-width: auto;
+  max-height: auto;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 0 1.5rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.form-group > label {
+  color: #777;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.btn {
+  background-color: hsl(200, 100%, 50%);
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+.btn:hover {
+  background-color: hsl(200, 100%, 40%);
+}
+
+.flashcard-container {
+  cursor: pointer;
+  height: 250px;
+  width: 300px;
+  perspective: 800px;
+  position: relative;
+  margin: auto;
+  transition: ease-in;
+  flex-shrink: 0;
+  align-items: center;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.card {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  border: 1px solid #300;
+  transform-style: preserve-3d;
+  transition: all 0.4s ease-in-out;
+}
+
+.card .front {
+  height: 247px;
+  width: 197px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(255, 251, 251, 1);
+
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
+
+  left: 0;
+}
+
+.card .back {
+  height: 250px;
+  width: 200px;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+.card-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  /* display: flex;
+    justify-content: space-around; */
+  width: 100%;
+  height: 600px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto;
+  width: 200px;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  transform-style: preserve-3d;
+  transition: 150ms;
+  cursor: pointer;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+
+  /* BACK OF CARD SIZING */
+  height: 250px;
+  width: 200px;
+  position: absolute;
+  border: 1px solid #300;
+  transform-style: preserve-3d;
+  transition: all 0.4s ease-in-out;
+}
+
+.card:hover {
+  --translate-y: -2px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card.flip {
+  --rotate-y: 180deg;
+}
+
+.card .back {
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.flashcard-options {
+  margin-top: 0.5rem;
+}
+
+.flashcard-option {
+  margin-top: 0.25rem;
+  color: #555;
+  font-size: 0.75rem;
+}
+
+.flashcard-option:first-child {
+  margin-top: 0;
+}
+.question-text {
+  color: #333;
+  font-size: 1em;
+  padding: auto;
+  word-wrap: break-word;
+}
+
+.answer-text {
+  color: #333;
+  font-size: 1em;
+  padding: auto;
+  word-wrap: break-word;
+}
+
+.add-form {
+  height: 170px;
+  position: relative;
+}
+
+.btn-box {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.card-page-container {
+  width: 1400px;
+}
+
+.card-block {
+  display: inline-block;
+}

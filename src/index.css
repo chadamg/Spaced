@@ -278,7 +278,7 @@ Slider
   border-radius: 5%;
   margin-bottom: 0rem;
   width: 400px;
-  height: 250px;
+  height: 255px;
   object-fit: cover;
   border: 4px solid var(--clr-grey-8);
   box-shadow: var(--dark-shadow);
@@ -370,12 +370,13 @@ Body
 }
 .container {
   display: flex;
-  justify-content: center;
+  width: 900px;
 }
 .body-image {
   flex-basis: 40%;
-  width: 50%;
-  padding-left: 20px;
+  width: 450px;
+  height:311px;
+  padding-left: 0px;
 }
 .body-text {
   font-size: 20px;
@@ -423,6 +424,7 @@ Body
   padding: 30px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
+  margin-bottom: 20px;
 }
 
 .key-features-card:hover,
@@ -471,7 +473,6 @@ Body
     padding: 0 20px;
   }
 }
-
 
 /*
 =============== 
@@ -541,8 +542,6 @@ Scroller
   max-width: var(--max-width);
   text-align: center;
   display: flex;
-
-
 }
 
 .prev,

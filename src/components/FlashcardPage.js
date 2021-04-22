@@ -5,10 +5,12 @@ import UseToken from "./fetch/Fetch";
 import AddCard from "./AddCard";
 import { useGlobalContext } from "./StudyModalContext";
 import Scroller from "./StudyCardScroller";
+import '../Flashcard.css';
+import Button from "./Button";
 
 
 
-const FlashcardPage = () => {
+const FlashcardPage = ({ onAdd, showAdd }) => {
   const { token } = UseToken();
   const [flashcards, setFlashcards] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -104,15 +106,24 @@ const FlashcardPage = () => {
             Study
           </button>
         </div>
+        <div className="form-group">
+          <Button
+            color={showAdd ? "red" : "steelblue"}
+            text={showAdd ? "Close" : "Add Card"}
+            onClick={onAdd}
+          />
+        </div>
+        <div className="form-group">
+          {showAdd && <AddCard onAdd={addCard} />}
+        </div>
       </form>
-      <div className="container">
-        <FlashcardList
-          flashcards={flashcards}
-          onDelete={deleteCard}
-          onAdd={() => setShowAddCard(!showAddCard)}
-          showAdd={showAddCard}
-        />
-        {showAddCard && <AddCard onAdd={addCard} />}
+      <div className="card-page-container">
+        <div className="container card-block">
+          <FlashcardList
+            flashcards={flashcards}
+            onDelete={deleteCard}
+          />
+        </div>
       </div>
     </>
   );

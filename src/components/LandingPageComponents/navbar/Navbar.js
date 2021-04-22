@@ -52,7 +52,7 @@ const Navbar = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/cards">Cards</Link></li>
             <li><Link to="/about">About Us</Link></li>
-            <li>{!token ? <Link to="/login">Login</Link> : <Link to="/" onClick={logoutUser}>Logout</Link>}</li>
+            <li>{!token ? <Link to="/login">Login</Link> : <a href="/" onClick={logoutUser}>Logout</a>}</li>
             {/* {links.map((link) => {
               const { id, url, text } = link;
               return (

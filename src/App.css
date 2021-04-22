@@ -44,10 +44,10 @@ body {
   align-items: center;
 }
 
-.container {
+/*.container {
   max-width: 900px;
   margin: 1rem 2rem;
-}
+}*/
 
 .header {
   display: flex;
@@ -71,7 +71,7 @@ body {
   margin-bottom: .25rem;
 }
 
-.btn {
+/*.btn {
   background-color: hsl(200, 100%, 50%);
   color: white;
   padding: .5em 1em;
@@ -82,7 +82,7 @@ body {
 
 .btn:hover {
   background-color: hsl(200, 100%, 40%);
-}
+}*/
 
 .card-grid {
   display: grid;
