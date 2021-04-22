@@ -12,7 +12,7 @@ export default function FlashcardList({
 }) {
   return (
     <div className="card-grid">
-      <div className="container">
+      <div className="container-wrap">
         {flashcards.map((flashcard) => {
           return (
             <Flashcard

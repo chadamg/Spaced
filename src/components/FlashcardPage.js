@@ -5,10 +5,8 @@ import UseToken from "./fetch/Fetch";
 import AddCard from "./AddCard";
 import { useGlobalContext } from "./StudyModalContext";
 import Scroller from "./StudyCardScroller";
-import '../Flashcard.css';
+import "../Flashcard.css";
 import Button from "./Button";
-
-
 
 const FlashcardPage = ({ onAdd, showAdd }) => {
   const { token } = UseToken();
@@ -38,7 +36,7 @@ const FlashcardPage = ({ onAdd, showAdd }) => {
       {
         method: "GET",
         headers: {
-          "Authorization": "Token " + token,
+          Authorization: "Token " + token,
         },
       }
     )
@@ -60,7 +58,7 @@ const FlashcardPage = ({ onAdd, showAdd }) => {
     const res = await fetch("/api/card/", {
       method: "POST",
       headers: {
-        "Authorization": "Token " + token,
+        Authorization: "Token " + token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(card),
@@ -73,15 +71,13 @@ const FlashcardPage = ({ onAdd, showAdd }) => {
     await fetch(`/api/card/${id}`, {
       method: "DELETE",
       headers: {
-        "Authorization": "Token " + token,
+        Authorization: "Token " + token,
       },
     });
     setFlashcards(flashcards.filter((flashcard) => flashcard.id !== id));
   };
 
-
-
-  const { openModal } = useGlobalContext()
+  const { openModal } = useGlobalContext();
 
   return (
     <>
@@ -118,11 +114,8 @@ const FlashcardPage = ({ onAdd, showAdd }) => {
         </div>
       </form>
       <div className="card-page-container">
-        <div className="container card-block">
-          <FlashcardList
-            flashcards={flashcards}
-            onDelete={deleteCard}
-          />
+        <div className="card-block">
+          <FlashcardList flashcards={flashcards} onDelete={deleteCard} />
         </div>
       </div>
     </>

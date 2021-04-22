@@ -26,15 +26,15 @@ const AddCard = ({ onAdd }) => {
       return;
     }
 
-    onAdd({ question, answer, subject: subjectEl.current.value })
+    onAdd({ question, answer, subject: subjectEl.current.value });
 
     setQuestion("");
     setAnswer("");
   };
 
   return (
-    <div class="form-popup" class="form-container">
-      <form className="add-form"  onSubmit={onSubmit}>
+    <div className="form-popup" class="form-container">
+      <form className="add-form" onSubmit={onSubmit}>
         <div className="form-control">
           <label>Question</label>
           <input
@@ -68,7 +68,7 @@ const AddCard = ({ onAdd }) => {
         <input type="submit" value="Save Card" className="btn btn-block" />
       </form>
     </div>
-    );
-  };
+  );
+};
 
 export default AddCard;

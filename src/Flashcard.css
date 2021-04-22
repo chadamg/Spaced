@@ -8,6 +8,7 @@
   max-width: auto;
   max-height: auto;
   margin: auto;
+  /* flex-wrap: wrap; */
 }
 
 .header {
@@ -48,8 +49,8 @@
 
 .flashcard-container {
   cursor: pointer;
-  height: 250px;
-  width: 300px;
+  height: 300px;
+  width: 200px;
   perspective: 800px;
   position: relative;
   margin: auto;
@@ -57,7 +58,7 @@
   flex-shrink: 0;
   align-items: center;
   padding-left: 150px;
-  padding-right: 150px;
+  padding-right: 100px;
 }
 
 .card {
@@ -159,14 +160,14 @@
 .question-text {
   color: #333;
   font-size: 1em;
-  padding: auto;
+  padding: 70px 0;
   word-wrap: break-word;
 }
 
 .answer-text {
   color: #333;
   font-size: 1em;
-  padding: auto;
+  padding: 70px 0;
   word-wrap: break-word;
 }
 
@@ -174,17 +175,27 @@
   height: 170px;
   position: relative;
 }
-
+/* 
 .btn-box {
   position: relative;
   width: 100%;
   height: 200px;
-}
+} */
 
 .card-page-container {
-  width: 1400px;
+  width: 700px;
 }
 
 .card-block {
   display: inline-block;
+}
+
+.container-wrap {
+  display: flex;
+  width: 1600px;
+  flex-wrap: wrap;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
