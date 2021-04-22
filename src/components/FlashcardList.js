@@ -1,14 +1,31 @@
-import React from 'react'
-import Flashcard from './Flashcard';
+import React from "react";
+import Flashcard from "./Flashcard";
+import Button from "./Button";
 
-export default function FlashcardList({ flashcards, onDelete, onToggle, onAdd }) {
-
+export default function FlashcardList({
+  flashcards,
+  onDelete,
+  onToggle,
+  onAdd,
+  showAdd,
+}) {
   return (
     <div className="card-grid">
-      {flashcards.map(flashcard => {
-        return <Flashcard flashcard={flashcard} key={flashcard.id} onDelete={onDelete} onToggle={onToggle} />
+      {flashcards.map((flashcard) => {
+        return (
+          <Flashcard
+            flashcard={flashcard}
+            key={flashcard.id}
+            onDelete={onDelete}
+            onToggle={onToggle}
+          />
+        );
       })}
-      <button type="button" onClick={onAdd} >Add Card</button>
+      <Button
+          color={showAdd ? "red" : "steelblue"}
+          text={showAdd ? "Close" : "Add Card"}
+          onClick={onAdd}
+        />
     </div>
-  )
+  );
 }

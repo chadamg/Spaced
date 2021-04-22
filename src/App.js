@@ -1,47 +1,42 @@
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-// import CardsPage from './components/CardsPage';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 // import React, { useState, useEffect, useRef } from 'react';
-import FlashcardPage from './components/FlashcardPage';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-// import FetchModular from './components/fetch/useFetch';
-import UseToken from './components/fetch/Fetch';
-import LandingPage from './components/LandingPage';
-import Navbar from './components/LandingPageComponents/navbar/Navbar';
-import Footer from './components/LandingPageComponents/footer/index'
-import AddCard from './components/AddCard';
-
+import FlashcardPage from "./components/FlashcardPage";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import UseToken from "./components/fetch/Fetch";
+import LandingPage from "./components/LandingPage";
+import Navbar from "./components/LandingPageComponents/navbar/Navbar";
+import Footer from "./components/LandingPageComponents/footer/index";
 
 function App() {
-
   const { token, setToken } = UseToken();
 
   return (
-      // <FetchModular />
+    <Router>
+      <div>
+        <Navbar />
 
-    
-      <Router>
-        <div>
-            <Navbar />
-              <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
 
-              <Route exact path="/login" render={(props) => (
-                <SignIn {...props} setToken={setToken} />
-              )}>
-              </Route>
-              <Route exact path="/register" render={(props) => (
-                <SignUp {...props} setToken={setToken} />
-              )}
-              />
-              <Route exact path="/cards">
-                {!token ? <Redirect to="/login" /> : <FlashcardPage />}
-              </Route>
-              <Route exact path="/add">
-                {!token ? <Redirect to="/login" /> : <AddCard />}
-              </Route>
-            <Footer />
-        </div>
-      </Router>
+        <Route
+          exact
+          path="/login"
+          render={(props) => <SignIn {...props} setToken={setToken} />}
+        ></Route>
+
+        <Route
+          exact
+          path="/register"
+          render={(props) => <SignUp {...props} setToken={setToken} />}
+        />
+
+        <Route exact path="/cards">
+          {!token ? <Redirect to="/login" /> : <FlashcardPage />}
+        </Route>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

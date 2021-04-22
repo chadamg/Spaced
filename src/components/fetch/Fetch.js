@@ -20,26 +20,25 @@ export const useFetch = (url) => {
 
 //Create a card
 
-
 //Token functions
 export const UseToken = () => {
   const getToken = () => {
-    const tokenString = localStorage.getItem('token');
+    const tokenString = localStorage.getItem("token");
     const userToken = JSON.parse(tokenString);
-    return userToken?.token
+    return userToken?.token;
   };
 
   const [token, setToken] = useState(getToken());
 
-  const saveToken = userToken => {
-    localStorage.setItem('token', JSON.stringify(userToken));
+  const saveToken = (userToken) => {
+    localStorage.setItem("token", JSON.stringify(userToken));
     setToken(userToken.token);
   };
 
   return {
     setToken: saveToken,
-    token
-  }
-}
+    token,
+  };
+};
 
-export default UseToken
+export default UseToken;

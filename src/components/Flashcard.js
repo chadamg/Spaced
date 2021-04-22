@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { FaTimes } from 'react-icons/fa';
 
-// import FlashcardList from './FlashcardList';
-
-
 export default function Flashcard({ flashcard, onDelete, onToggle }) {
   
   const [flip, setFlip] = useState(false)
@@ -23,8 +20,6 @@ export default function Flashcard({ flashcard, onDelete, onToggle }) {
     window.addEventListener('resize', setMaxHeight)
     return () => window.removeEventListener('resize', setMaxHeight)
   }, [])
-
-  
 
   return (
     <div className="flashcard-wrapper">
