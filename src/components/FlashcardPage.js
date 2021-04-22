@@ -3,6 +3,10 @@ import React, { useState, useEffect, useRef } from "react";
 import FlashcardList from "./FlashcardList";
 import UseToken from "./fetch/Fetch";
 import AddCard from "./AddCard";
+import { useGlobalContext } from "./StudyModalContext";
+import Scroller from "./StudyCardScroller";
+
+
 
 const FlashcardPage = () => {
   const { token } = UseToken();
@@ -32,7 +36,7 @@ const FlashcardPage = () => {
       {
         method: "GET",
         headers: {
-          Authorization: "Token " + token,
+          "Authorization": "Token " + token,
         },
       }
     )
@@ -50,11 +54,11 @@ const FlashcardPage = () => {
       });
   }
 
-  const addTask = async (card) => {
+  const addCard = async (card) => {
     const res = await fetch("/api/card/", {
       method: "POST",
       headers: {
-        Authorization: "Token " + token,
+        "Authorization": "Token " + token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(card),
@@ -63,15 +67,19 @@ const FlashcardPage = () => {
     setFlashcards([...flashcards, data]);
   };
 
-  const deleteTask = async (id) => {
+  const deleteCard = async (id) => {
     await fetch(`/api/card/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: "Token " + token,
+        "Authorization": "Token " + token,
       },
     });
     setFlashcards(flashcards.filter((flashcard) => flashcard.id !== id));
   };
+
+
+
+  const { openModal } = useGlobalContext()
 
   return (
     <>
@@ -91,15 +99,20 @@ const FlashcardPage = () => {
         <div className="form-group">
           <button className="btn">Search</button>
         </div>
+        <div className="form-group">
+          <button onClick={openModal} className="btn">
+            Study
+          </button>
+        </div>
       </form>
       <div className="container">
         <FlashcardList
           flashcards={flashcards}
-          onDelete={deleteTask}
+          onDelete={deleteCard}
           onAdd={() => setShowAddCard(!showAddCard)}
           showAdd={showAddCard}
         />
-        {showAddCard && <AddCard onAdd={addTask} />}
+        {showAddCard && <AddCard onAdd={addCard} />}
       </div>
     </>
   );

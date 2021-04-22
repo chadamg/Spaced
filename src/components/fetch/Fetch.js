@@ -31,6 +31,9 @@ export const UseToken = () => {
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
+    if (userToken==="") {
+      return localStorage.removeItem("token");
+    }
     localStorage.setItem("token", JSON.stringify(userToken));
     setToken(userToken.token);
   };

@@ -7,6 +7,7 @@ import UseToken from "./components/fetch/Fetch";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/LandingPageComponents/navbar/Navbar";
 import Footer from "./components/LandingPageComponents/footer/index";
+import Modal from "./components/StudyModal";
 
 function App() {
   const { token, setToken } = UseToken();
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/cards">
           {!token ? <Redirect to="/login" /> : <FlashcardPage />}
         </Route>
+        <Modal />
 
         <Footer />
       </div>
