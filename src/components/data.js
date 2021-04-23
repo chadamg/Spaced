@@ -74,3 +74,5 @@ const cards = [
   ]
 
 export default cards;
+
+//we didn't have time for the carousel to take data from backend, used static data as substitute  
