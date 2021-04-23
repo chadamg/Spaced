@@ -109,12 +109,10 @@ const FlashcardPage = ({ onAdd, showAdd }) => {
             onClick={onAdd}
           />
         </div>
-        <div className="form-group">
-          {showAdd && <AddCard onAdd={addCard} />}
-        </div>
       </form>
+      <div className="form-group">{showAdd && <AddCard onAdd={addCard} />}</div>
       <div className="card-page-container">
-          <FlashcardList flashcards={flashcards} onDelete={deleteCard} />
+        <FlashcardList flashcards={flashcards} onDelete={deleteCard} />
       </div>
     </>
   );
