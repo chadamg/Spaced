@@ -500,7 +500,7 @@ Study mode modal
 .modal-container {
   background: var(--clr-white);
   border-radius: var(--radius);
-  width: 70vw;
+  /* width: 70vw; */
   height: 70vh;
   /* max-width: var(--fixed-width); */
   text-align: center;
@@ -526,7 +526,7 @@ Scroller
 */
 .section-center {
   margin: 0 auto;
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   width: 80vw;
   height: 450px;
   max-width: 800px;

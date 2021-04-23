@@ -114,9 +114,7 @@ const FlashcardPage = ({ onAdd, showAdd }) => {
         </div>
       </form>
       <div className="card-page-container">
-        <div className="card-block">
           <FlashcardList flashcards={flashcards} onDelete={deleteCard} />
-        </div>
       </div>
     </>
   );

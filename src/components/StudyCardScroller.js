@@ -21,7 +21,7 @@ function Scroller() {
     <section className="section">
       <div className="title">
         <h2>
-          <span></span>Question
+          <span></span>Study
         </h2>
       </div>
       <div className="section-center">

@@ -12,28 +12,16 @@ export default function FlashcardList({
 }) {
   return (
     <div className="card-grid">
-      <div className="container-wrap">
-        {flashcards.map((flashcard) => {
-          return (
-            <Flashcard
-              flashcard={flashcard}
-              key={flashcard.id}
-              onDelete={onDelete}
-              onToggle={onToggle}
-            />
-          );
-        })}
-      </div>
-      <div className="btn-box">
-        <div>
-          {/* <Button
-            color={showAdd ? "red" : "steelblue"}
-            text={showAdd ? "Close" : "Add Card"}
-            onClick={onAdd}
-          /> */}
-          <addCard />
-        </div>
-      </div>
+      {flashcards.map((flashcard) => {
+        return (
+          <Flashcard
+            flashcard={flashcard}
+            key={flashcard.id}
+            onDelete={onDelete}
+            onToggle={onToggle}
+          />
+        );
+      })}
     </div>
   );
 }
